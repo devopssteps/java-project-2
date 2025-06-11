@@ -15,6 +15,11 @@ pipeline {
                 sh 'mvn clean deploy' //-Dmaven.test.skip=true
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t devopssteps/myapp:latest .'
+            }
+        }
     }
 }
 
